@@ -105,54 +105,49 @@
                                                         <a class="btn btn-danger btn-sm"  onclick="deletedata('<?php echo $r['nik']; ?>')" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                                                     
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="myModal<?php echo $r['nik']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $r['nik']; ?>" aria-hidden="true">
-                                                      <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                          <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                            <h4 class="modal-title" id="myModalLabel<?php echo $r['nik']; ?>">Edit Data</h4>
+                                            <div class="modal fade" id="myModal<?php echo $r['nik']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel<?php echo $r['nik']; ?>" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel<?php echo $r['nik']; ?>">Edit Data <?php echo $r['nik']; ?></h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                          <div class="row">
+                                                          <label class="col-md-4" for="nm">Nama</label>
+                                                              <div class="col-md-4">
+                                                              <input type="text" class="form-control" id="nm<?php echo $r['nik']; ?>" value="<?php echo $r['nama']; ?>">
+                                                              </div>
                                                           </div>
-                                                          <div class="modal-body">
-
-                                                    <form>
-                                                    <div class="form-group">
-                                                      <label class="col-xs-6 col-sm-4 control-label" for="nm">Nama</label>
-                                                      <div class="col-xs-6 col-sm-4">
-                                                      <input type="text" class="form-control" id="nm<?php echo $r['nik']; ?>" value="<?php echo $r['nama']; ?>">
-                                                      </div>
-                                                      </div>
-                                                    <div class="form-group">
-                                                      <label class="col-xs-6 col-sm-4 control-label" for="almt">Alamat</label>
-                                                      <div class="col-xs-6 col-sm-4">
-                                                      <input type="text" class="form-control" id="almt<?php echo $r['nik']; ?>" value="<?php echo $r['alamat']; ?>">
+                                                        <div class="row">
+                                                          <label class="col-md-4" for="almt">Alamat</label>
+                                                          <div class="col-md-4">
+                                                          <input type="text" class="form-control" id="almt<?php echo $r['nik']; ?>" value="<?php echo $r['alamat']; ?>">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                      <label class="col-xs-6 col-sm-4 control-label" for="tlp">Telephone</label>
-                                                      <div class="col-xs-6 col-sm-4">
-                                                      <input type="text" class="form-control" id="tlp<?php echo $r['nik']; ?>" value="<?php echo $r['telephone']; ?>">
+                                                        <div class="row">
+                                                          <label class="col-md-4" for="tlp">Telephone</label>
+                                                          <div class="col-md-4">
+                                                          <input type="text" class="form-control" id="tlp<?php echo $r['nik']; ?>" value="<?php echo $r['telephone']; ?>">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                      <label class="col-xs-6 col-sm-4 control-label" for="eml">Email</label>
-                                                      <div class="col-xs-6 col-sm-4">
-                                                      <input type="text" class="form-control" id="eml<?php echo $r['nik']; ?>" value="<?php echo $r['email']; ?>">
-                                                      </div>
-                                                    </div>
-                                                        
-                                                    </form>
-
-                                                          </div>
-                                                          <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            <button type="button" onclick="updatedata('<?php echo $r[0]; ?>')" class="btn btn-primary">Save changes</button>
+                                                        <div class="row">
+                                                          <label class="col-md-4" for="eml">Email</label>
+                                                          <div class="col-md-4">
+                                                          <input type="text" class="form-control" id="eml<?php echo $r['nik']; ?>" value="<?php echo $r['email']; ?>">
                                                           </div>
                                                         </div>
-                                                      </div>
-                                                    </div>    
-                                                    
-                                                    </td>
-                                                </tr>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" onclick="updatedata('<?php echo $r[0]; ?>')" class="btn btn-primary">Save changes</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>    
+                                            
+                                            </td>
+                                        </tr>
                                              <?php
                                             $no++;
                                             }
@@ -176,7 +171,7 @@
     function updatedata(str){
 	
 	var id = str;
-        var nm = $('#nm'+str).val();
+    var nm = $('#nm'+str).val();
 	var almt = $('#almt'+str).val();
 	var tlp = $('#tlp'+str).val();
 	var eml = $('#eml'+str).val();

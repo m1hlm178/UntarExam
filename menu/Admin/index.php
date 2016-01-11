@@ -32,7 +32,7 @@ if(!$_SESSION['username'] || is_numeric($_SESSION['username']))
     <link rel="stylesheet" href="../dist/css/formValidation.css"/>
 
     <!-- Bootstrap Basic CSS -->
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <!-- <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/> -->
 
     <!-- Timeline CSS -->
     <link href="../dist/css/timeline.css" rel="stylesheet">
@@ -99,7 +99,7 @@ if(!$_SESSION['username'] || is_numeric($_SESSION['username']))
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><img class="img-responsive" src="../../assets/img/LOGO-UNTAR.png" alt="UNTAR LOGO"></a>
+                <a class="navbar-brand" href="index.php"><img class="img-responsive" src="../../assets/img/logo.png" alt="UNTAR LOGO"></a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">

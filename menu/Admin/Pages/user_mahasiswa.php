@@ -128,7 +128,7 @@ while ($r = mysqli_fetch_array($sql)) {
         <td><?php echo  $r['email']; ?></td>
         <td><?php echo  $r['angkatan']; ?></td>
         <td>
-            <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['nik']; ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            <a class="btn btn-warning btn-sm" data-toggle="modal" data-target="#myModal<?php echo $r['nim']; ?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
             <a class="btn btn-danger btn-sm"  onclick="deletedata('<?php echo $r['nim']; ?>')" ><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 
         <!-- Modal -->
@@ -140,29 +140,24 @@ while ($r = mysqli_fetch_array($sql)) {
                 <h4 class="modal-title" id="myModalLabel<?php echo $r['nim']; ?>">Edit Data</h4>
               </div>
               <div class="modal-body">
-
-        <form>
-        <div class="form-group">
-          <label class="col-xs-6 col-sm-4 control-label" for="nm">Nama</label>
-          <div class="col-xs-6 col-sm-4">
-          <input type="text" class="form-control" id="nm<?php echo $r['nim']; ?>" value="<?php echo $r['nama']; ?>">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-xs-6 col-sm-4 control-label" for="tlp">Telephone</label>
-          <div class="col-xs-6 col-sm-4">
-          <input type="text" class="form-control" id="tlp<?php echo $r['nim']; ?>" value="<?php echo $r['telephone']; ?>">
-            </div>
-        </div>
-        <div class="form-group">
-          <label class="col-xs-6 col-sm-4 control-label" for="eml">Email</label>
-          <div class="col-xs-6 col-sm-4">
-          <input type="text" class="form-control" id="eml<?php echo $r['nim']; ?>" value="<?php echo $r['email']; ?>">
-          </div>
-        </div>
-
-        </form>
-
+                <div class="row">
+                  <label class="col-md-4" for="nm">Nama</label>
+                  <div class="col-md-4">
+                  <input type="text" class="form-control" id="nm<?php echo $r['nim']; ?>" value="<?php echo $r['nama']; ?>">
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-md-4" for="tlp">Telephone</label>
+                  <div class="col-md-4">
+                  <input type="text" class="form-control" id="tlp<?php echo $r['nim']; ?>" value="<?php echo $r['telephone']; ?>">
+                    </div>
+                </div>
+                <div class="row">
+                  <label class="col-md-4" for="eml">Email</label>
+                  <div class="col-md-4">
+                  <input type="text" class="form-control" id="eml<?php echo $r['nim']; ?>" value="<?php echo $r['email']; ?>">
+                  </div>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -190,13 +185,12 @@ $no++;
             </div>
             <!-- /.row -->
         </div>
-
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
     function updatedata(str){
 	
 	var id = str;
-        var nm = $('#nm'+str).val();
+    var nm = $('#nm'+str).val();
 	var tlp = $('#tlp'+str).val();
 	var eml = $('#eml'+str).val();
 	
@@ -255,22 +249,8 @@ $no++;
             }
         } );
     } );
-    $(document).ready(function() {
+
     $('#registrationForm')
-        // .find('[name="selectmatakul"]')
-        //     .selectpicker()
-        //     .change(function(e) {
-        //         // revalidate the color when it is changed
-        //         $('#registrationForm').formValidation('revalidateField', 'selectmatakul');
-        //     })
-        //     .end()
-        // .find('[name="selectkelas"]')
-        //     .selectpicker()
-        //     .change(function(e) {
-        //         // revalidate the language when it is changed
-        //         $('#registrationForm').formValidation('revalidateField', 'selectkelas');
-        //     })
-            // .end()
     .formValidation({
         framework: 'bootstrap',
         excluded: ':disabled',
@@ -280,20 +260,6 @@ $no++;
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            // selectmatakul: {
-            //         validators: {
-            //             notEmpty: {
-            //                 message: 'Please select your native language.'
-            //             }
-            //         }
-            //     },
-            // selectkelas: {
-            //         validators: {
-            //             notEmpty: {
-            //                 message: 'Please select your native language.'
-            //             }
-            //         }
-            //     },
             nim: {
                 validators: {
                     digits: {
@@ -361,5 +327,4 @@ $no++;
             }
         }
     });
-});
 </script>

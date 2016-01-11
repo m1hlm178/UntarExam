@@ -26,7 +26,7 @@
                                 <div class="form-group">
                                   <label class="col-md-3 control-label"></label>
                                   <div class="col-md-8">
-                                    <button class="btn btn-primary" type="submit" name="Input-Falkutas" class="btn btn-primary btn-block">Simpan Mata Kuliah</button>
+                                    <button class="btn btn-primary" type="submit" name="Input-Falkutas" class="btn btn-primary btn-block">Simpan Falkutas Kuliah</button>
                                   </div>
                                 </div>
                     </div>

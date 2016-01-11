@@ -109,7 +109,7 @@ if(!$_SESSION['username'])
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><img class="img-responsive" src="../../assets/img/LOGO-UNTAR.png" alt="UNTAR LOGO"></a>
+                <a class="navbar-brand" href="index.php"><img class="img-responsive" src="../../assets/img/logo.png" alt="UNTAR LOGO"></a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -136,7 +136,7 @@ if(!$_SESSION['username'])
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.php?p=index.php"><i class="fa fa-home fa-fw"></i> Menu Awal</a>
+                            <a href="index.php?p=index"><i class="fa fa-home fa-fw"></i> Menu Awal</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-pencil fa-fw"></i> Input Soal<span class="fa arrow"></span></a>
@@ -146,6 +146,9 @@ if(!$_SESSION['username'])
                             </li>
                             <li>
                                 <a href="index.php?p=input_soal_uas">Input Soal UAS <span class="fa arrow"></span></a>
+                            </li>
+                            <li>
+                                <a href="index.php?p=upload_soal">Upload Soal <span class="fa arrow"></span></a>
                             </li>
                             </ul>
                         </li>
@@ -157,10 +160,10 @@ if(!$_SESSION['username'])
                                  <a href="#">Lihat Soal UTS <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="index.php?p=lihat_soal&s=UTS&t=A">Type Soal A</a>
+                                            <a href="index.php?p=lihat_soal&s=UTS&t=A&mtk=kosong">Type Soal A</a>
                                         </li>
                                         <li>
-                                            <a href="index.php?p=lihat_soal&s=UTS&t=B">Type Soal B</a>
+                                            <a href="index.php?p=lihat_soal&s=UTS&t=B&mtk=kosong">Type Soal B</a>
                                         </li>
                                     </ul>
                             </li>
@@ -168,10 +171,10 @@ if(!$_SESSION['username'])
                                 <a href="#">Lihat Soal UAS <span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="index.php?p=lihat_soal&s=UAS&t=A">Type Soal A</a>
+                                            <a href="index.php?p=lihat_soal&s=UAS&t=A&mtk=kosong">Type Soal A</a>
                                         </li>
                                         <li>
-                                            <a href="index.php?p=lihat_soal&s=UAS&t=B">Type Soal B</a>
+                                            <a href="index.php?p=lihat_soal&s=UAS&t=B&mtk=kosong">Type Soal B</a>
                                         </li>
                                     </ul>
                             </li>
@@ -188,6 +191,9 @@ if(!$_SESSION['username'])
                         </li>
                         <li>
                             <a href="index.php?p=mahasiswa"><i class="fa fa-group fa-fw"></i> Lihat Mahasiswa</a>
+                        </li>
+                        <li>
+                            <a href="index.php?p=download"><i class="fa fa-pencil fa-fw"></i>Unduh Format Excel</a>
                         </li>
                     </ul>
                 </div>

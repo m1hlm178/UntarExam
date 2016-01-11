@@ -1,38 +1,63 @@
-    <div id="page-wrapper">
+<div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Detail User</h1>
+                    <h1 class="page-header">User Profile</h1>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-xs-12">
-                            <div class="well well-sm">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-8">
-                                        <h4>Selamat Datang : <?php echo $_SESSION['username'];?></h4>
-                                        <p>
-                                        <?php
-                                        $r = mysqli_fetch_array(mysqli_query($dbcon,"SELECT * FROM detail_dosen WHERE nik = '".$_SESSION['username']."'"));
-                                        ?>
-                                            <i class="glyphicon glyphicon-envelope"></i> 
-                                            Nama : <?php echo $r['nama'];?>
-                                            <br />
-                                            <i class="glyphicon glyphicon-home"></i> 
-                                            Alamat : <?php echo $r['alamat'];?>
-                                            <br />
-                                            <i class="glyphicon glyphicon-phone"></i> 
-                                            Telephone : <?php echo $r['telephone'];?>
-                                            <br />
-                                            <i class="glyphicon glyphicon-send"></i> 
-                                            Email : <?php echo $r['email'];?>
-                                            <br />
-                                        </p>
-                                        <!-- Split button -->
-                                        <a href="index.php?p=user_edit"><button type="button" class="btn btn-success">Ganti Data</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <?php
+            $r = mysqli_fetch_array(mysqli_query($dbcon,"SELECT * FROM detail_dosen WHERE nik = '".$_SESSION['username']."'"));
+            if(is_numeric($_SESSION['username']))  {
+               if (strlen($_SESSION['username'])<=8) {
+                    $status="Dosen";
+                }
+                else {
+                    $status="Mahasiswa";
+                }
+            }
+            else  {
+                $status="Admin";  
+            }
+            ?>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> 
+                <?php
+                $r2 = mysqli_fetch_array(mysqli_query($dbcon, "SELECT * FROM fhoto_dosen WHERE detail_dosen_nik = '".$_SESSION['username']."'"));
+                if(!empty($r2[4])){
+                    echo "<img src='data:image;base64,".$r2[4]."' class='img-circle img-responsive' alt='PicProfile'>";
+                }else{
+                    echo "<img src='http://placehold.it/150' class='img-circle img-responsive' alt='PicProfile'>";
+                }
+                ?>
                 </div>
-        </div>
+                <div class="col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Nama:</td>
+                        <td><?php echo $r['nama'];?></td>
+                      </tr>
+                      <tr>
+                        <td>Alamat:</td>
+                        <td><?php echo $r['alamat'];?></td>
+                      </tr>
+                      <tr>
+                        <td>Telephone:</td>
+                        <td><?php echo $r['telephone'];?></td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td><?php echo $r['email'];?></td>
+                      </tr>
+                      <tr>
+                        <td>Level:</td>
+                        <td><?php echo $status;?></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <a href="index.php?p=user_edit" class="btn btn-primary">Ganti Data</a>
+                </div>
+              </div>
+            </div>
+</div>

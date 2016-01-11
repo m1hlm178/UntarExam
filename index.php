@@ -22,7 +22,7 @@
     <section class="container login-form">
         <section>
             <form method="POST" action="login.php" role="login">
-                <img src="assets/img/LOGO-UNTAR.png" alt="" class="img-responsive" />
+                <img src="assets/img/logo.png" alt="" class="img-responsive" />
                 <div class="form-group">
                     <?php
                         //        menampilkan pesan jika ada pesan

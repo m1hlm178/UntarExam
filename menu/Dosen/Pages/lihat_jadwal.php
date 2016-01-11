@@ -61,7 +61,6 @@
                                                           </div>
                                                           <div class="modal-body">
 
-                                                    <form>                                                       
                                                         <div class="form-group">
                                                         <label class="col-lg-3 control-label" for="tgldanwaktu">Tanggal dan Waktu Ujian:</label>
                                                         <div class="col-lg-8">
@@ -75,7 +74,6 @@
                                                           </p>
                                                         </div>
                                                         </div>
-                                                    </form>
 
                                                           </div>
                                                           <div class="modal-footer">

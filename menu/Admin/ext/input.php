@@ -123,36 +123,67 @@ if(isset($_POST['Input-Edit'])){
 	//jika tombol tambah benar di klik maka lanjut prosesnya
 //        echo "fuck";
 	$nama           = $_POST['nama'];
-        $alamat         = $_POST['alamat'];
-        $telephone  	= $_POST['telp'];
+    $alamat         = $_POST['alamat'];
+    $telephone  	= $_POST['telp'];
 	$email          = $_POST['email'];
-        $user           = $_SESSION['username'];
+    $user           = $_SESSION['username'];
 	$pass           = $_POST['pass'];
-        $npass          = $_POST['cpass'];
-        $pass = sha1($pass);
-//        echo $user." ".$pass;
-        $cek = $dbcon->query("SELECT * FROM login_admin WHERE id = '$user' AND pass = '$pass'");
+    $npass          = $_POST['cpass'];
+    $pass = sha1($pass);
+    $cek = $dbcon->query("SELECT * FROM login_admin WHERE id = '$user' AND pass = '$pass'");
 	$cek1 = mysqli_num_rows($cek);
 	if($cek1>0)
 	{  
-            if(empty($npass))
+			$errors = array();
+		    if($_FILES['image']['size'] > 0){
+		    $fileName = $_FILES['image']['name'];
+		    $fileSize = $_FILES['image']['size'];
+		    $fileType = $_FILES['image']['type'];
+	    	$filecontent = addslashes($_FILES['image']['tmp_name']);
+	    	$filecontent = file_get_contents($filecontent);
+	    	$filecontent = base64_encode($filecontent);
+
+		    $fileType=strtolower(end(explode('.',$_FILES['image']['name'])));
+			$expensions= array("jpeg","jpg","png");
+
+			if(in_array($fileType,$expensions)=== false){
+			$errors="Format Yang Di UPLOAD Salah!!";
+			}elseif ($fileSize > 1457390){
+			$errors='File size must be excately 1.5 MB';
+			}
+
+
+			if(empty($errors)==true){
+			$r = mysqli_fetch_array(mysqli_query($dbcon,"SELECT * FROM detail_admin WHERE login_admin_id = '".$_SESSION['username']."'"));
+ 			$cekfhoto = $dbcon->query("SELECT * FROM fhoto_admin WHERE detail_admin_no = '$r[0]' AND detail_admin_login_admin_id = '$r[1]'");
+			$cekfhoto1 = mysqli_num_rows($cekfhoto);
+			if($cekfhoto1>0){
+				$dbcon->query("UPDATE fhoto_admin SET name='$fileName',size='$fileSize',type='$fileType',content='$filecontent' WHERE detail_admin_no='$r[0]'");
+			}else{
+				$dbcon->query("INSERT into fhoto_admin(name, size, type, content, detail_admin_no, detail_admin_login_admin_id) values ('$fileName', '$fileSize', '$fileType', '$filecontent', '$r[0]', '$r[1]')");
+			}}}
+            if(empty($npass)==true AND empty($errors)==true)
             {
                 $dbcon->query("UPDATE detail_admin SET nama='$nama', alamat='$alamat', hp='$telephone', email='$email' WHERE login_admin_id='$user'");
-            
-//                echo '<script> alert("PTEST!!");</script>';
+            	$_SESSION['notif'] = "Update Data Sukses!!";
+            	// $_SESSION['notif'] = "a".$fileSize;
+            	header("Location: {$_SERVER['HTTP_REFERER']}");
+                
             }
-            else
+            elseif (empty($errors)==true)
             {
                 $npass = sha1($npass);
                 $dbcon->query("UPDATE detail_admin SET nama='$nama', alamat='$alamat', hp='$telephone', email='$email' WHERE login_admin_id='$user'");
                 $dbcon->query("UPDATE login_admin SET pass='$npass' WHERE id='$user'");
+                $_SESSION['notif'] = "Update Data Sukses!!";
+            	header("Location: {$_SERVER['HTTP_REFERER']}");
+            }else{
+            	$_SESSION['notif'] = "Data Yang Dimasukan Tidak Valids!!<br>".$errors;
+                header("Location: {$_SERVER['HTTP_REFERER']}");
             }
-            $_SESSION['notif'] = "Update Data Sukses!!";
-            header("Location: {$_SERVER['HTTP_REFERER']}");
-	} else {
-            $_SESSION['notif'] = "Password Salah!!";
-            header("Location: {$_SERVER['HTTP_REFERER']}");
-		
+			} else {
+                $_SESSION['notif'] = "Password Salah!!";
+                header("Location: {$_SERVER['HTTP_REFERER']}");
 	}
 }
 

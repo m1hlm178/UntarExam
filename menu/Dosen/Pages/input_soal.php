@@ -7,7 +7,7 @@ if(!$_SESSION['username'])
 }
 if(isset($_POST['Input-Soal'])){
 	
-	$_SESSION['falkutas']=$_POST['selectfal'];
+	    $_SESSION['falkutas']=$_POST['selectfal'];
         $_SESSION['jurusan']=$_POST['selectjur'];
         $_SESSION['matkul']=$_POST['matkul'];
         $_SESSION['type']=$_POST['selecttype'];

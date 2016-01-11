@@ -2,7 +2,8 @@
 // E-Exam Database Connection
 $host = "localhost";
 $username = "root";
-$password = "samsung";
+$password = "";
 $database = "ne-exam";
-$dbcon=mysqli_connect($host,$username,$password,$database);
+$dbcon=mysqli_connect($host,$username,$password,$database) or die(mysqli_error($dbcon));
+
 ?>  
